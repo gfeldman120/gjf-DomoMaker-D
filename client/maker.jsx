@@ -22,7 +22,7 @@ const handleDomo = (e, onDomoAdded) => {
 
 const DomoForm = (props) => {
     return(
-        <form ud="domoForm"
+        <form id="domoForm"
             onSubmit={(e) => handleDomo(e, props.triggerReload)}
             name="domoForm"
             action="/maker"
@@ -34,7 +34,7 @@ const DomoForm = (props) => {
             <label htmlFor="domoAge">Age: </label>
             <input id="domoAge" type="number" min="0" name="age"/>
             <label htmlFor="domoLevel">Level: </label>
-            <input id="domoLevel" type="number" min="1" max="99" name="age"/>
+            <input id="domoLevel" type="number" min="1" max="99" name="level"/>
             <input className="makeDomoSubmit" type="submit" value="Make Domo"/>
         </form>
     );
@@ -68,6 +68,15 @@ const DomoList = (props) => {
                 <h3 className="domoAge">Age: {domo.age}</h3>
                 <h3 className="domoLevel">Level: {domo.level}</h3>
                 <button onClick={() => deleteDomo(domo._id)}></button>
+                <form
+                    onSubmit={(e) => handleDomo(e, props.triggerReload)}
+                    name="domoDeleteForm"
+                    action="/deleteDomo"
+                    method="POST"
+                    className="domoForm"
+                >
+                    <input className="deleteDomoSubmit" type="submit" value="Delete Domo"/>
+                </form>
             </div>
         );
     });
