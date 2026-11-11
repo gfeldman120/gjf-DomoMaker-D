@@ -17,7 +17,7 @@ const getDomos = async (req, res) => {
 }
 
 const makeDomo = async (req, res) => {
-    if(!req.body.name || !req.body.age || req.body.level) {
+    if(!req.body.name || !req.body.age || !req.body.level) {
         return res.status(400).json({ error: 'Name, age and level are required!' });
     }
 
