@@ -45,13 +45,13 @@ const deleteDomo = async (req, res) => {
     try {
         const query = { 
             owner: req.session.account._id,
-            _id: req.params.id,
+            _id: req.body.id,
         };
         const deletedDomo = await Domo.findOneAndDelete(query);
         if (deletedDomo) {
             return res.status(204).json({ message: "Deleted Domo successfully!" });
         }
-        return res.status(404).json({ error: "Domo not founD!" });
+        return res.status(404).json({ error: "Domo not found!" });
     } catch (err) {
         console.log(err);
         return res.status(500).json({ error: 'Error deleting Domo!' });
