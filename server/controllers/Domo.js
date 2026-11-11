@@ -49,7 +49,7 @@ const deleteDomo = async (req, res) => {
         };
         const deletedDomo = await Domo.findOneAndDelete(query);
         if (deletedDomo) {
-            return res.status(204).json({ message: "Deleted Domo successfully!" });
+            return res.status(200).json({ message: "Deleted Domo successfully!" });
         }
         return res.status(404).json({ error: "Domo not found!" });
     } catch (err) {
