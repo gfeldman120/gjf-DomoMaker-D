@@ -20,6 +20,13 @@ const handleDomo = (e, onDomoAdded) => {
     return false;
 }
 
+const handleDelete = (e, onDomoDeleted, id) => {
+    e.preventDefault();
+    helper.hideError();
+    helper.sendPost(e.target.action, { id }, onDomoDeleted);
+    return false;
+}
+
 const DomoForm = (props) => {
     return(
         <form id="domoForm"
@@ -67,7 +74,7 @@ const DomoList = (props) => {
                 <h3 className="domoName">Name: {domo.name}</h3>
                 <h3 className="domoAge">Age: {domo.age}</h3>
                 <h3 className="domoLevel">Level: {domo.level}</h3>
-                <button onClick={(e) => handleDomo(e, props.triggerReload)}
+                <button onClick={(e) => handleDelete(e, props.triggerReload, domo.id)}
                     name="domoDelete"
                     action="/deleteDomo"
                     method="POST"
