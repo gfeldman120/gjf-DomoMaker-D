@@ -20,10 +20,10 @@ const handleDomo = (e, onDomoAdded) => {
     return false;
 }
 
-const handleDelete = (e, onDomoDeleted, id) => {
+const handleDelete = (e, onDomoDeleted, _id) => {
     e.preventDefault();
     helper.hideError();
-    helper.sendPost('/deleteDomo', { id }, onDomoDeleted);
+    helper.sendPost('/deleteDomo', { _id }, onDomoDeleted);
     return false;
 }
 
@@ -95,7 +95,7 @@ const App = () => {
                 <DomoForm triggerReload={() => setReloadDomos(!reloadDomos)}/>
             </div>
             <div id="domos">
-                <DomoList domos={[]} triggerReload={() => setReloadDomos(!reloadDomos)} reloadDomos={reloadDomos}/>
+                <DomoList triggerReload={() => setReloadDomos(!reloadDomos)} domos={[]} reloadDomos={reloadDomos}/>
             </div>
         </div>
     );

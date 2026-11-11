@@ -45,7 +45,7 @@ const deleteDomo = async (req, res) => {
     try {
         const query = { 
             owner: req.session.account._id,
-            _id: req.body.id,
+            _id: req.body._id,
         };
         const deletedDomo = await Domo.findOneAndDelete(query);
         if (deletedDomo) {
